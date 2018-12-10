@@ -46,9 +46,15 @@ parser.add_argument(
 ## Usage
 ### Python
 ```
-./elastic-query.py --uri http://user:password@elasticsearch-logging.osh-infra:80 --labels kubernetes.labels.application:elasticsearch kubernetes.labels.component:test
+./elastic-query.py \
+        --uri http://user:password@elasticsearch-logging.osh-infra:80 \
+        --labels kubernetes.labels.application:elasticsearch \
+        kubernetes.labels.component:test
 ```
 ### Docker
 ```
-docker run docker.io/srwilkers/elastic-query:v0.1.0 --uri http://user:password@elasticsearch-logging.osh-infra:80 --labels kubernetes.labels.application:elasticsearch kubernetes.labels.component:test
+docker run docker.io/srwilkers/elastic-query:v0.1.0 \
+        --uri http://user:password@elasticsearch-logging.osh-infra:80
+        --labels kubernetes.labels.application:elasticsearch
+        kubernetes.labels.component:test
 ```
