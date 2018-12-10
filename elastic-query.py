@@ -8,7 +8,6 @@ import sys
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search
 
-
 def main():
     """Query a specific elasticsearch index or all indexes for logs, filtering
     by either by pod name and namespace or by kubernetes label values for the
