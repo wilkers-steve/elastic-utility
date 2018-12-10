@@ -81,7 +81,7 @@ def main():
     print("Scan yielded %s results." % (search.count()))
     print("------")
     for hit in search.scan():
-        print("%s | %s | %s" % (hit.time, hit.kubernetes.pod_name, hit.log))
+        print("%s | %s" % (hit.time, hit.log))
 
 
 def pod_query(es, pod, namespace, index):
