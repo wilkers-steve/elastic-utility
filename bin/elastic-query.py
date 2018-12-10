@@ -74,7 +74,6 @@ def main():
     if args.query == "pod":
         search = pod_query(es, args.pod, args.namespace, args.index)
     elif args.query == "labels":
-        print(args.labels)
         search = label_query(es, args.labels, args.index)
     else:
         print("I'm sorry Dave, I'm afraid I can't do that")
