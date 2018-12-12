@@ -88,7 +88,7 @@ def main():
     print("------")
     for hit in search.scan():
         if args.file:
-            with open(args.file, 'a') as f:
+            with open(args.file, 'a+') as f:
                 if 'log' in hit:
                     f.write("{} | {}\n".format(hit["@timestamp"], hit["log"]))
                 elif 'message' in hit:
