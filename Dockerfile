@@ -1,5 +1,8 @@
 FROM alpine:3.7
-MAINTAINER Steve Wilkerson (wilkers.steve@gmail.com)
+LABEL maintainer="Steve Wilkerson (wilkers.steve@gmail.com)"
+
+ARG ES_VERSION=5.5.3
+ARG ES_DSL_VERSION=5.4.0
 
 RUN apk add --update \
     python \
@@ -7,8 +10,8 @@ RUN apk add --update \
   && rm -rf /var/cache/apk/*
 
 RUN pip install \
-    elasticsearch==5.5.3 \
-    elasticsearch-dsl==5.4.0
+    elasticsearch==${ES_VERSION} \
+    elasticsearch-dsl==${ES_DSL_VERSION}
 
 COPY bin/elastic-query.py ./elastic-query.py
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import argparse
 from datetime import datetime
@@ -87,8 +87,7 @@ def main():
 def pod_query(es, pod, namespace, index):
     search = Search(using=es, index=index) \
         .filter({"term": {"kubernetes.pod_name.keyword": pod}}) \
-        .filter({"term": {"kubernetes.namespace_name.keyword": namespace}}) \
-        .sort('@timestamp', {"order": "asc"})
+        .filter({"term": {"kubernetes.namespace_name.keyword": namespace}})
     return search
 
 
@@ -99,7 +98,6 @@ def label_query(es, labels, index):
         label_key = label_parts[0]
         label_value = label_parts[1]
         search = search.filter({"term": {label_key: label_value}})
-    search = search.sort('@timestamp', {"order": "asc"})
     return search
 
 
