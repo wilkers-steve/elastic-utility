@@ -94,14 +94,14 @@ def main():
                 elif 'message' in hit:
                     f.write("{} | {}\n".format(hit["@timestamp"], hit["message"]))
                 else:
-                    f.write("{} | {}\n".format(hit["@timestamp"], hit["MESSAGE"]))
+                    f.write("{} | {} | {}\n".format(hit["@timestamp"], hit["HOSTNAME"], hit["MESSAGE"]))
         else:
             if 'log' in hit:
                 print("{} | {}\n".format(hit["@timestamp"], hit["log"]))
             elif 'message' in hit:
                 print("{} | {}\n".format(hit["@timestamp"], hit["message"]))
             else:
-                print("{} | {}\n".format(hit["@timestamp"], hit["MESSAGE"]))
+                print("{} | {} | {}\n".format(hit["@timestamp"], hit["HOSTNAME"], hit["MESSAGE"]))
 
 
 def pod_query(es, pod, namespace, index):
