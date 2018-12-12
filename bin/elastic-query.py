@@ -66,6 +66,12 @@ def main():
         type=str,
         required=False,
         help='The namespace of the pod(s) to retrieve logs for')
+    parser.add_argument(
+        '--file','-f',
+        metavar='file',
+        type=str,
+        required=False,
+        help='Output results to file instead of console')
 
     args, unknown = parser.parse_known_args()
 
@@ -81,7 +87,11 @@ def main():
     print("Scan yielded %s results." % (search.count()))
     print("------")
     for hit in search.scan():
-        print("%s | %s" % (hit.time, hit.log))
+        if args.file:
+            with open(args.file, 'a') as f:
+                f.write("{} | {}\n".format(hit.time, hit.log))
+        else:
+            print("{} | {}\n".format(hit.time, hit.log))
 
 
 def pod_query(es, pod, namespace, index):
