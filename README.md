@@ -41,6 +41,12 @@ parser.add_argument(
     type=str,
     required=False,
     help='The namespace of the pod(s) to retrieve logs for')
+parser.add_argument(
+    '--file','-f',
+    metavar='file',
+    type=str,
+    required=False,
+    help='Output results to file instead of console')
 ```
 
 ## Usage
