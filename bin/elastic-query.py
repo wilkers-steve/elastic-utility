@@ -89,9 +89,19 @@ def main():
     for hit in search.scan():
         if args.file:
             with open(args.file, 'a') as f:
-                f.write("{} | {}\n".format(hit.time, hit.log))
+                if 'log' in hit:
+                    f.write("{} | {}\n".format(hit["@timestamp"], hit["log"]))
+                elif 'message' in hit:
+                    f.write("{} | {}\n".format(hit["@timestamp"], hit["message"]))
+                else:
+                    f.write("{} | {}\n".format(hit["@timestamp"], hit["MESSAGE"]))
         else:
-            print("{} | {}\n".format(hit.time, hit.log))
+            if 'log' in hit:
+                print("{} | {}\n".format(hit["@timestamp"], hit["log"]))
+            elif 'message' in hit:
+                print("{} | {}\n".format(hit["@timestamp"], hit["message"]))
+            else:
+                print("{} | {}\n".format(hit["@timestamp"], hit["MESSAGE"]))
 
 
 def pod_query(es, pod, namespace, index):
