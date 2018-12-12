@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime
 import getopt
+import os
 import re
 import sys
 
@@ -88,7 +89,7 @@ def main():
     print("------")
     for hit in search.scan():
         if args.file:
-            with open(args.file, 'a+') as f:
+            with open(os.path.abspath(args.file), 'a+') as f:
                 if 'log' in hit:
                     f.write("{} | {}\n".format(hit["@timestamp"], hit["log"]))
                 elif 'message' in hit:
