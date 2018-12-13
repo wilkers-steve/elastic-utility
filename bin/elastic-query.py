@@ -98,11 +98,11 @@ def main():
                     f.write("{} | {} | {}\n".format(hit["@timestamp"], hit["HOSTNAME"], hit["MESSAGE"]))
         else:
             if 'log' in hit:
-                print("{} | {}\n".format(hit["@timestamp"], hit["log"]))
+                print("{} | {}".format(hit["@timestamp"], hit["log"]))
             elif 'message' in hit:
-                print("{} | {}\n".format(hit["@timestamp"], hit["message"]))
+                print("{} | {}".format(hit["@timestamp"], hit["message"]))
             else:
-                print("{} | {} | {}\n".format(hit["@timestamp"], hit["HOSTNAME"], hit["MESSAGE"]))
+                print("{} | {} | {}".format(hit["@timestamp"], hit["HOSTNAME"], hit["MESSAGE"]))
 
 
 def pod_query(es, pod, namespace, index):
